@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <script>
+        function validateForm() {
+            var userId = document.getElementById('user-id').value;
+            var picture = document.getElementById('picture').value;
+
+            if (userId === '' || isNaN(userId) || parseInt(userId) <= 0) {
+                alert('User ID must be a positive number');
+                return false;
+            }
+
+            if (picture === '') {
+                alert('Please upload a picture');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    
+    <form onsubmit="return validateForm();" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>
+                    <fieldset>
+                    <legend>Profile Picture</legend>
+                    <label for="user-id">User ID:</label>
+                    <input type="text" id="user-id" name="user-id" required>
+                    <br><br>
+            
+                    <label for="picture">Picture:</label>
+                    <input type="file" id="picture" name="picture" required>
+                    <br><hr>
+            
+                    <input type="submit" value="Submit">
+                    </fieldset>
+                    
+                </td>
+            </tr>
+        </table>
+        
+    </form>
+</body>
+</html>

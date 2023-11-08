@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+    <script>
+        function validateDateOfBirth() {
+            var day = document.getElementById('day').value;
+            var month = document.getElementById('month').value;
+            var year = document.getElementById('year').value;
+
+            if (day === '' || month === '' || year === '') {
+                alert('Date of birth cannot be empty');
+                return false;
+            }
+
+            var dayRegex = /^(0?[1-9]|[12][0-9]|3[01])$/; 
+            var monthRegex = /^(0?[1-9]|1[0-2])$/; 
+            var yearRegex = /^(19\d\d|20(0[0-9]|1[0-6]))$/;
+            if (!dayRegex.test(day) || !monthRegex.test(month) || !yearRegex.test(year)) {
+                alert('Please enter a valid date of birth (dd/mm/yyyy)');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Date of Birth Validation</h1>
+    <form onsubmit="return validateDateOfBirth();">
+        <table>
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>Date of Birth</legend>
+                        <label for="day"></label>
+                        <input type="text" id="day" name="day" placeholder="dd" maxlength="2" size="2">/
+                        <input type="text" id="month" name="month" placeholder="mm" maxlength="2" size="2">/
+                        <input type="text" id="year" name="year" placeholder="yyyy" maxlength="4" size="4">
+                        <br><hr>
+                        <input type="submit" value="Submit">
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+       
+    </form>
+</body>
+</html>
