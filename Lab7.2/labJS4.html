@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>dob validation</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Date of birth</legend>
+        <form id="dobForm" onsubmit="return dobval()">
+            <input type="number" name="dob1" value="" />/
+            <input type="number" name="dob2" value="" />/
+            <input type="number" name="dob3" value="" />
+            <br><hr>
+            <input type="submit" value="Submit" />
+        </form>
+    </fieldset>
+
+    <script>
+        function dobval() {
+            let day = parseInt(document.getElementsByName("dob1")[0].value);
+            let month = parseInt(document.getElementsByName("dob2")[0].value);
+            let year = parseInt(document.getElementsByName("dob3")[0].value);
+
+            if (day === 0 || month === 0 || year === 0) {
+                alert("Date of birth cannot be empty.");
+                return false;
+            }
+            
+            if (
+                day < 1 || day > 31 ||
+                month < 1 || month > 12 ||
+                year < 1900 || year > 2016
+            ) {
+                alert("Date of birth must be in the range of dd: 1-31, mm: 1-12, yyyy: 1900-2016.");
+                return false;
+            } else {
+                alert("Your date of birth is: " + day + "/" + month + "/" + year);
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>

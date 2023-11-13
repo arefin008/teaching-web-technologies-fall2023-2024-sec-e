@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emiail Validation</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Email</legend>
+        <form>
+            <input type="email" id="email" name="email" value="" />
+            <img src="" height="20" title="Hint: sample@gmail.com"><br>
+            <hr>
+            <input type="submit" name="" value="Submit" onclick="return validateForm();"/>
+        </form>
+    </fieldset>
+
+    <script>
+        function validateForm() {
+            const emailInput = document.getElementById("email");
+
+            if (emailInput.value === "") {
+                alert("Email cannot be empty.");
+                return false;
+            }
+            if (emailInput.value.indexOf('@') === -1) {
+                alert("Please enter a valid email address (e.g., anything@example.com).");
+                return false;
+            }
+            alert("Valid email: " + emailInput.value);
+
+            return true;
+        }
+    </script>
+</body>
+</html>

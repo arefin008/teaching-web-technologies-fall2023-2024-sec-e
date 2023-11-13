@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Validation</title>
+</head>
+<body>
+  <form id="inputForm">
+    <h2>Name</h2><br>
+    <input type="text" name="textInput" id="textInput" required>
+    <button type="button" onclick="validateAndDisplay()">Submit</button>
+  </form>
+
+  <h1 id="output">Output</h1>
+
+  <script>
+    function validateAndDisplay() {
+      inputElement = document.getElementById("textInput");
+      inputValue = inputElement.value.trim();
+      outputElement = document.getElementById("output");
+
+      if (inputValue == " ") {
+        alert("Input cannot be empty.");
+      } else if (inputValue.split(" ").length < 2) {
+        alert("Input must contain at least two words.");
+      } else {
+        outputElement.textContent = inputValue;
+      }
+    }
+  </script>
+</body>
+</html>
