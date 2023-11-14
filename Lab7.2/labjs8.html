@@ -1,71 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- 
   <title>Person Form</title>
-  
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
 
-  <form action="#" method="post">
+  <form id="personForm" action="#" method="post" onsubmit="return validateForm()">
     <table border=1>
-       <tr><td colspan="10"><center><b></b>Profile<b></b></center></td></tr>
-        <tr>
+      <tr>
+        <td colspan="10"><center><b>Profile</b></center></td>
+      </tr>
+      <tr>
         <th>Name</th>
-        <td><input type="text" name="name" required></td>
-        </tr>
-        <tr>
+        <td><input type="text" name="name" id="name" required></td>
+        <td><span id="nameError" class="error"></span></td>
+      </tr>
+      <tr>
         <th>Email</th>
-        <td><input type="email" name="email" required></td>
-        </tr>
-        <tr>
-            <th>Gender</th>
+        <td><input type="email" name="email" id="email" required></td>
+        <td><span id="emailError" class="error"></span></td>
+      </tr>
+      <tr>
+        <th>Gender</th>
         <td>
-          <select name="gender" required>
+          <select name="gender" id="gender" required>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
         </td>
-        <tr>
+        <td><span id="genderError" class="error"></span></td>
+      </tr>
+      <tr>
         <th>Date of Birth</th>
-        <td><input type="date" name="dob" required></td>
-        </tr>
-        <tr>
-            <th>Blood Group</th>
-            <td>
-                <select name="blood" required>
-                    <option value="A+">A+</option>
-                    <option value="AB+">AB+</option>
-                    <option value="B+">B+</option>
-                    <option value="O+">O+</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
+        <td><input type="date" name="dob" id="dob" required></td>
+        <td><span id="dobError" class="error"></span></td>
+      </tr>
+      <tr>
+        <th>Blood Group</th>
+        <td>
+          <select name="blood" id="blood" required>
+            <option value="A+">A+</option>
+            <option value="AB+">AB+</option>
+            <option value="B+">B+</option>
+            <option value="O+">O+</option>
+          </select>
+        </td>
+        <td><span id="bloodError" class="error"></span></td>
+      </tr>
+      <tr>
         <th>Degree</th>
         <td>
-            <input type="checkbox" name="degree" value="1"/> SSC 
-            <input type="checkbox" name="degree" value="2"/> HSC 
-            <input type="checkbox" name="degree" value="3"/> BSc
+          <input type="checkbox" name="degree" value="SSC"> SSC
+          <input type="checkbox" name="degree" value="HSC"> HSC
+          <input type="checkbox" name="degree" value="BSc"> BSc
         </td>
-            
-          </tr>
-          <tr>
-            <th>Photo</th>
-        <td><input type="file" name="photo" accept="image/*"></td>
-          </tr>
-          
-      
+        <td><span id="degreeError" class="error"></span></td>
+      </tr>
+      <tr>
+        <th>Photo</th>
+        <td><input type="file" name="photo" id="photo" accept="image/*"></td>
+        <td><span id="photoError" class="error"></span></td>
+      </tr>
       <tr>
         <td colspan="6"></td>
         <td id="submit-btn"><input type="submit" value="Submit"></td>
-
         <td colspan="7"></td>
         <td id="reset"><input type="reset" value="Reset"></td>
       </tr>
     </table>
   </form>
 
+  <div id="output"></div>
+
+  <script>
+    function validateForm() {
+      resetErrors();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const gender = document.getElementById('gender').value;
+      const dob = document.getElementById('dob').value.trim();
+      const blood = document.getElementById('blood').value;
+      const degreeInputs = document.getElementsByName('degree');
+      const photo = document.getElementById('photo').value.trim();
+
+      let isValid = true;
+
+      const nameError = document.getElementById('nameError');
+      if (name === '') {
+        nameError.textContent = 'Name cannot be empty';
+        isValid = false;
+      }
+
+      const emailError = document.getElementById('emailError');
+      if (email === '') {
+        emailError.textContent = 'Email cannot be empty';
+        isValid = false;
+      }
+
+      const genderError = document.getElementById('genderError');
+      if (gender === '') {
+        genderError.textContent = 'Please select a gender';
+        isValid = false;
+      }
+
+      const dobError = document.getElementById('dobError');
+      if (dob === '') {
+        dobError.textContent = 'Date of Birth cannot be empty';
+        isValid = false;
+      }
+
+      const bloodError = document.getElementById('bloodError');
+      if (blood === '') {
+        bloodError.textContent = 'Please select a blood group';
+        isValid = false;
+      }
+
+      const degreeError = document.getElementById('degreeError');
+      if (!Array.from(degreeInputs).some(input => input.checked)) {
+        degreeError.textContent = 'Please select at least one degree';
+        isValid = false;
+      }
+
+      const photoError = document.getElementById('photoError');
+      if (photo === '') {
+        photoError.textContent = 'Photo cannot be empty';
+        isValid = false;
+      }
+
+      if (isValid) {
+        displayOutput(name, email, gender, dob, blood, getSelectedDegrees(), photo);
+      }
+
+      return isValid;
+    }
+
+    function resetErrors() {
+      const errorElements = document.getElementsByClassName('error');
+      Array.from(errorElements).forEach(element => {
+        element.textContent = '';
+      });
+    }
+
+    function getSelectedDegrees() {
+      const degreeInputs = document.getElementsByName('degree');
+      const selectedDegrees = Array.from(degreeInputs)
+        .filter(input => input.checked)
+        .map(input => input.value);
+
+      return selectedDegrees.join(', ');
+    }
+
+    function displayOutput(name, email, gender, dob, blood, degrees, photo) {
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = `
+        <h2>Form Submitted Successfully!</h2>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Gender:</b> ${gender}</p>
+        <p><b>Date of Birth:</b> ${dob}</p>
+        <p><b>Blood Group:</b> ${blood}</p>
+        <p><b>Degree(s):</b> ${degrees}</p>
+        <p><b>Photo:</b> ${photo}</p>
+      `;
+    }
+  </script>
+
 </body>
 </html>
+
