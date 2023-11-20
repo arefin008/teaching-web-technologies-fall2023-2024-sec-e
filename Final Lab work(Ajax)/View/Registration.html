@@ -1,0 +1,38 @@
+
+<html lang="en">
+<head>
+    
+    <title>Job Portal</title>
+    
+</head>
+<body>
+
+ 
+
+        <div id="registration-container">
+            <h2>Registration</h2>
+            <form id="registration-form">
+                <label for="employee-name">Employee Name:</label>
+                <input type="text" id="employee-name" name="employee-name" required><br><br>
+                <label for="company-name">Company Name:</label>
+                <input type="text" id="company-name" name="company-name" required><br><br>
+                <label for="contact-no">Contact No:</label>
+                <input type="tel" id="contact-no" name="contact-no" required><br><br>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <div>
+                    Select role <select  name="role">
+                        <option id="admin-section" value="User">User</option>
+                         <option id="employee-section" value="Admin">Admin</option>
+                         </select><br><br>
+                </div>
+                <button type="button" onclick="registerEmployee()">Register</button>
+            </form>
+        </div>
+
+        
+        
+</body>
+</html>
