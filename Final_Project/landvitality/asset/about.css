@@ -1,0 +1,80 @@
+/* about.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+fieldset {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #343a40;
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    padding: 8px;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+}
+
+fieldset a {
+    text-decoration: none;
+}
+
+fieldset a > fieldset {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+}
+
+fieldset a > fieldset:hover {
+    background-color: #0056b3;
+}
+
+fieldset hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+fieldset fieldset {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

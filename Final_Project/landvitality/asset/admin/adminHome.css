@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.menu-container {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+fieldset {
+    border: none;
+    padding: 20px;
+}
+
+legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-table th, .menu-table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+.menu-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-link:hover {
+    background-color: #f0f8ff;
+}
+
+.logout-link {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.logout-link:hover {
+    color: #cc0000;
+}
