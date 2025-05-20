@@ -57,8 +57,10 @@ landvitality/
 
 ---
 
-##📄 License
+📄 License
+
 This project is developed as part of an academic course and is open for learning and non-commercial use. For reuse or contributions, feel free to fork or contact the author.
 
-##🙌 Acknowledgment
+🙌 Acknowledgment
+
 Developed as a final project for the Web Technologies course at AIUB (American International University-Bangladesh), Fall 2023–2024.
